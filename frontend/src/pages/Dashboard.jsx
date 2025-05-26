@@ -10,6 +10,7 @@ import {
 } from '@heroicons/react/24/outline'
 import TransactionInput from '../components/TransactionInput'
 import FinancialAnalytics from '../components/FinancialAnalytics'
+import { fetchTransactions, addTransaction } from '../api'
 
 export default function Dashboard() {
   const [showTransactionInput, setShowTransactionInput] = useState(false)
