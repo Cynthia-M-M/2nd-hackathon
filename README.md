@@ -1,6 +1,7 @@
 Kashela
 
 Your Hustle. Your Money. One App.
+it is live here[  ]
 
 Kashela is a revolutionary AI-powered financial assistant built for Africa's informal traders, small shopkeepers, and mobile hustlers. With just a voice command or a snapshot, Kashela helps users track income and expenses in real-time, calculate profit/loss, and accept digital payments via M-PESA, Bank, and QR Codes.
 
