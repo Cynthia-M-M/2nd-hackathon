@@ -1,3 +1,4 @@
+import React from 'react'
 import kashelaLogo from '../assets/kashela-logo.png'
 import { Link } from 'react-router-dom'
 import { 
@@ -7,6 +8,7 @@ import {
   MicrophoneIcon,
   ArrowRightIcon 
 } from '@heroicons/react/24/outline'
+import ResponsiveImage from '../components/ResponsiveImage'
 
 const features = [
   {
@@ -52,11 +54,14 @@ export default function LandingPage() {
         <div className="mx-auto max-w-3xl py-24 sm:py-32 lg:py-40">
           <div className="text-center">
             <div className="relative">
-              <img 
-                src={kashelaLogo} 
-                alt="Kashela logo" 
-                className="mx-auto h-20 sm:h-24 mb-8 transform transition-transform duration-700 hover:scale-110" 
-              />
+              <div className="w-32 sm:w-40 mx-auto">
+                <ResponsiveImage
+                  src={kashelaLogo}
+                  alt="Kashela logo"
+                  className="w-full h-auto transform transition-transform duration-700 hover:scale-110"
+                  sizes="(max-width: 640px) 128px, 160px"
+                />
+              </div>
               <div className="absolute inset-0 -z-10 blur-2xl opacity-20 bg-gradient-to-r from-burgundy-500 to-teal-500 rounded-full" />
             </div>
 
@@ -67,6 +72,7 @@ export default function LandingPage() {
               Track your expenses, manage payments, and gain insights with voice commands and receipt scanning.
               Your personal finance assistant that works as hard as you do.
             </p>
+
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-x-6">
               <Link
                 to="/register"

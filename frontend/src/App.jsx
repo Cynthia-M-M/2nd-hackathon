@@ -1,12 +1,23 @@
+import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { Suspense, lazy } from 'react'
 import { Toaster } from 'react-hot-toast'
 import Navbar from './components/Navbar'
-import LandingPage from './pages/LandingPage'
-import Login from './pages/Login'
-import Register from './pages/Register'
-import Dashboard from './pages/Dashboard'
-import Payments from './pages/Payments'
-import Reports from './pages/Reports'
+
+// Lazy load route components
+const LandingPage = lazy(() => import('./pages/LandingPage'))
+const Login = lazy(() => import('./pages/Login'))
+const Register = lazy(() => import('./pages/Register'))
+const Dashboard = lazy(() => import('./pages/Dashboard'))
+const Payments = lazy(() => import('./pages/Payments'))
+const Reports = lazy(() => import('./pages/Reports'))
+
+// Loading component
+const Loading = () => (
+  <div className="flex items-center justify-center min-h-[60vh]">
+    <div className="spinner h-12 w-12 border-4 border-teal-500 rounded-full"></div>
+  </div>
+)
 
 function App() {
   return (
@@ -22,14 +33,16 @@ function App() {
         <Navbar />
         <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
           <div className="max-w-7xl mx-auto">
-            <Routes>
-              <Route path="/" element={<LandingPage />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/payments" element={<Payments />} />
-              <Route path="/reports" element={<Reports />} />
-            </Routes>
+            <Suspense fallback={<Loading />}>
+              <Routes>
+                <Route path="/" element={<LandingPage />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/payments" element={<Payments />} />
+                <Route path="/reports" element={<Reports />} />
+              </Routes>
+            </Suspense>
           </div>
         </main>
       </div>

@@ -1,195 +1,107 @@
-Kashela
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Cynthia-M-M/2nd-hackathon/main/frontend/public/favicon.png" alt="Kashela Logo" width="200"/>
+</p>
 
-Your Hustle. Your Money. One App.
-it is live here[  ]
+<p align="center">
+  <b>Your Hustle. Your Money. One App.</b><br/>
+  <a href="https://kashela.live">Live Demo</a> | <a href="https://github.com/Cynthia-M-M/2nd-hackathon">GitHub Repository</a>
+</p>
 
-Kashela is a revolutionary AI-powered financial assistant built for Africa's informal traders, small shopkeepers, and mobile hustlers. With just a voice command or a snapshot, Kashela helps users track income and expenses in real-time, calculate profit/loss, and accept digital payments via M-PESA, Bank, and QR Codes.
+---
 
-🌍 Purpose
+## 🌍 Purpose
 
-Kashela was born during the Vibe Coding Hackathon — part of the #1MillionDevs Movement — to solve real-world problems using AI and low-code tools.
+Kashela is an AI-powered financial assistant tailored for Africa's informal traders, small shopkeepers, and mobile hustlers. It simplifies income and expense tracking through voice commands and receipt scanning.
 
-We're answering the Retail & Ecommerce challenge:
+---
 
-"Many small traders don’t track their income or expenses and have no idea if they’re making a profit."
+## 🧠 Features
 
-Kashela empowers them to know where their money goes — instantly.
+- 🔊 **Voice-to-Expense**: Log expenses using voice commands.  
+- 📷 **Snap Receipt**: Capture and process receipts via OCR.  
+- 📊 **Profit & Loss Dashboard**: Visual summaries of financial data.  
+- 💰 **M-PESA & Bank Integration**: Accept and record digital payments.  
+- ☁️ **Cloud Sync**: Secure data storage with Supabase.  
+- 📈 **CSV Export**: Downloadable financial reports.
 
-🧠 Features
+---
 
-🔊 Voice-to-Expense — Talk to log expenses
+## 💼 Business Model
 
-📷 Snap Receipt — Take a photo to record data via OCR
+- **Freemium**: Free for 30 days, then $1/month via M-PESA.  
+- **Bulk Onboarding**: Collaborations with SACCOs and trade unions.  
+- **Affiliate Partnerships**: Integration with digital lenders and training platforms.
 
-📊 Profit & Loss Dashboard — Visual income & expense summaries
+---
 
-💰 MPESA STK & Bank Payment — Accept and record real payments
+## 🧪 Tech Stack
 
-📦 Cloud Sync (Supabase) — All data safely stored and accessible
+- **Frontend**: React, Tailwind CSS  
+- **Backend**: FastAPI  
+- **Database**: Supabase  
+- **OCR**: Tesseract.js  
+- **Voice Input**: Web Speech API  
+- **Payments**: Safaricom M-PESA Sandbox
 
-📈 Export to CSV — Download reports for records
+---
 
-💼 Business Model
+## 🚀 Getting Started
 
-Freemium model: Free for 30 days, then $1/month via M-PESA
+### 1. Clone the Repository
+```bash
+git clone https://github.com/Cynthia-M-M/2nd-hackathon.git
+cd 2nd-hackathon
 
-- **Bulk onboarding** via SACCOs, Women Groups, Boda Boda Unions to reach many users at once
-- **Affiliate partnerships** with digital lenders and training platforms for additional revenue
-- **Potential premium features** like advanced analytics or ads for scalability
+2. Frontend Setup
 
-📈 Market Opportunity & User Insights
-Kashela targets Africa’s informal economy, which employs over 80% of workers in many countries. Small-scale traders, boda boda riders, and micro-businesses struggle with financial management, missing out on growth opportunities.
+cd frontend
+npm install
+npm start
 
-Why Kashela matters:
-User Persona:
+3. Backend Setup
 
-Amina, a kiosk owner in Nairobi, struggles to keep track of daily sales and expenses, often losing money due to manual errors.
+cd backend
+python -m venv venv
+.\venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+uvicorn main:app --reload
 
-Juma, a boda boda rider, wants to save for repairs and emergencies but lacks clear profit data.
+🔮 Future Plans
 
-Market Size:
+    Expand to agricultural markets
 
-Over 40 million informal traders across East Africa alone.
+    Introduce multi-language support
 
-Increasing smartphone penetration makes digital tools accessible.
+    Integrate AI-driven financial advice
 
-Growth Potential:
-
-Integration with SACCOs, trade unions, and digital lenders can drive rapid user acquisition.
-
-Partnerships with financial institutions expand Kashela’s ecosystem.
-
-🔮 Scalability & Future Plans
-Expand to cover agriculture markets, helping farmers track sales and expenses.
-
-Add multi-language support for regional languages to broaden reach.
-
-Integrate AI-powered financial advice tailored to user behavior and cash flow patterns.
-
-Introduce microloan eligibility scoring based on tracked data for better credit access.
-
-Develop a mobile app for offline access and enhanced performance.
-
-🚀 Next Steps
-Finalize MVP and launch pilot with select SACCOs and trader groups.
-
-Collect user feedback to improve UX and features.
-
-Apply for further funding or grants to scale development.
-
-Explore partnerships with mobile money providers beyond M-PESA.
-
-🧪 Tech Stack
-
-Tech
-
-Description
-
-FastAPI
-
-Backend & APIs
-
-Supabase
-
-Auth + DB
-
-React + Tailwind
-
-Frontend PWA
-
-Tesseract.js
-
-OCR Receipt Scanning
-
-Web Speech API
-
-Voice Input
-
-Safaricom M-PESA Sandbox
-
-Mobile Money Integration
-
-Bolt.new, Lovable.dev
-
-Low-code boosters
-
-🔥 Cursor AI Prompt Archive
-
-These are prompts used to build Kashela using Cursor AI:
-
-1. Backend Setup
-
-Create a FastAPI backend that handles:
-- User registration/login
-- Income & expense entries via voice (STT) or image upload (OCR)
-- Real-time transaction logging
-- Monthly report generation
-- M-PESA STK push integration (sandbox)
-- Bank transfer simulation
-- Supabase connection for DB + Auth
-
-2. Frontend UI
-
-Build a responsive web/mobile UI using React + Tailwind CSS:
-- Landing page (teal & burgundy color theme)
-- Login / Register
-- Dashboard with Add Expense, Charts, Reports
-- Payment screen (M-PESA, Bank, QR)
-- Pro styling, animations, shadows, rounded cards
-
-3. Image-to-Text & Voice
-
-Integrate OCR for receipt scanning (Tesseract.js).
-Add voice-to-text input using Web Speech API.
-Include these on dashboard: "Speak Expense" and "Snap Receipt" buttons.
-
-4. Payment Integration
-
-Use Safaricom M-PESA sandbox:
-- Simulate STK push
-- Handle confirmation webhook
-- Log transactions in dashboard
-Simulate bank deposit with dummy API + manual confirmation.
-
-5. Reports & CSV Export
-
-Build logic to:
-- Show net profit/loss
-- Plot graphs with Chart.js
-- Export reports to CSV
-
-6. UI Finishing Touches
-
-Apply professional design:
-- Teal & Burgundy color scheme
-- Hover effects, transitions
-- Heroicons or Lucide icons
-- Clean typography (Inter/Poppins)
-
-🧪 Demo & Deployment
-
-
-
-📤 Submission Summary (Hackathon)
-
-Built using AI and low-code tools
-
-Solves the Retail & Ecommerce income-tracking challenge
-
-Full real-world payment integration
-
-Aligned with SDG 1: No Poverty & SDG 8: Decent Work
+    Develop a mobile application for offline access
 
 🤝 Join the Kashela Movement
 
-Kashela isn’t just an app — it’s a revolution in African informal finance.
-Let’s win this, together.
+Kashela is more than an app; it's a step towards financial empowerment for Africa's informal sector.
 
-“Building Human-Centered, Joy-Driven Solutions Using AI and Low-Code Tools.”
+    "Building Human-Centered, Joy-Driven Solutions Using AI and Low-Code Tools."
 
-🎧 Hackathon Vibes: Code Meets Community
+🎧 Hackathon Vibes
 
-"Code like you care. Build like you vibe."
-Where AI meets heart — and low-code unlocks everyday innovation.
+    "Code like you care. Build like you vibe."
 
-Let your lines of code uplift lives. Let your product pulse with joy. 🚀✨
+✅ Pushing Your Project to GitHub
+1. Initialize Git
+
+git init
+
+2. Add Remote Repository
+
+git remote add origin https://github.com/Cynthia-M-M/2nd-hackathon.git
+
+3. Add and Commit Changes
+
+git add .
+git commit -m "Initial commit"
+
+4. Push to GitHub
+
+git push -u origin main
+
+For more detailed instructions, refer to GitHub's official documentation.

@@ -13,6 +13,9 @@ export default [
       globals: {
         ...globals.browser,
         ...globals.es2021,
+        ...globals.node,
+        React: true,
+        JSX: true
       },
       parserOptions: {
         ecmaFeatures: { jsx: true },
@@ -25,14 +28,38 @@ export default [
     rules: {
       ...js.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
-      'no-unused-vars': ['error', { 
-        varsIgnorePattern: '^_',
-        argsIgnorePattern: '^_' 
+      'no-unused-vars': ['warn', { 
+        varsIgnorePattern: '^_|^React$|^Component$|^JSX$',
+        argsIgnorePattern: '^_',
+        vars: 'all',
+        args: 'after-used',
+        ignoreRestSiblings: true,
       }],
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
       ],
     },
+    settings: {
+      react: {
+        version: 'detect',
+      },
+      'import/resolver': {
+        node: {
+          extensions: ['.js', '.jsx']
+        }
+      }
+    },
   },
+  // Node.js scripts configuration
+  {
+    files: ['scripts/**/*.js'],
+    languageOptions: {
+      ecmaVersion: 2024,
+      sourceType: 'module',
+      globals: {
+        ...globals.node,
+      },
+    },
+  }
 ]
