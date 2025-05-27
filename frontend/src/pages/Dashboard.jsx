@@ -6,11 +6,11 @@ import {
   CreditCardIcon, 
   BanknotesIcon,
   DocumentTextIcon,
-  ChartBarIcon 
+  ChartBarIcon,
+  ArrowTrendingUpIcon 
 } from '@heroicons/react/24/outline'
 import TransactionInput from '../components/TransactionInput'
 import FinancialAnalytics from '../components/FinancialAnalytics'
-import { fetchTransactions, addTransaction } from '../api'
 
 export default function Dashboard() {
   const [showTransactionInput, setShowTransactionInput] = useState(false)
@@ -41,33 +41,51 @@ export default function Dashboard() {
       name: 'Manual Entry',
       icon: PlusIcon,
       description: 'Add transaction details manually',
-      action: () => setShowTransactionInput(true)
+      action: () => setShowTransactionInput(true),
+      gradient: 'from-emerald-500 to-teal-500',
+      bgGradient: 'from-emerald-50 to-teal-50'
     },
     {
       name: 'Scan Receipt',
       icon: DocumentTextIcon,
       description: 'Upload receipt image for OCR',
-      action: () => setShowTransactionInput(true)
+      action: () => setShowTransactionInput(true),
+      gradient: 'from-violet-500 to-purple-500',
+      bgGradient: 'from-violet-50 to-purple-50'
     },
     {
       name: 'Bank Transfer',
       icon: BanknotesIcon,
       description: 'Direct bank transfer',
-      action: () => setShowTransactionInput(true)
+      action: () => setShowTransactionInput(true),
+      gradient: 'from-burgundy-500 to-rose-500',
+      bgGradient: 'from-burgundy-50 to-rose-50'
     },
     {
       name: 'M-PESA',
       icon: CreditCardIcon,
       description: 'Mobile money transfer',
-      action: () => setShowTransactionInput(true)
+      action: () => setShowTransactionInput(true),
+      gradient: 'from-cyan-500 to-blue-500',
+      bgGradient: 'from-cyan-50 to-blue-50'
     },
   ]
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    <div className="space-y-8">
+      {/* Header */}
+      <div>
+        <h1 className="text-2xl sm:text-3xl font-display font-bold bg-gradient-to-r from-burgundy-600 to-teal-600 bg-clip-text text-transparent">
+          Welcome Back
+        </h1>
+        <p className="mt-2 text-gray-600 text-sm sm:text-base">
+          Track your finances and manage your transactions
+        </p>
+      </div>
+
       {/* Transaction Input */}
       {showTransactionInput ? (
-        <div className="bg-white rounded-2xl shadow-card p-6 transition-all duration-300 ease-in-out">
+        <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 transition-all duration-300 ease-in-out">
           <TransactionInput
             onSave={handleSaveTransaction}
             onCancel={() => setShowTransactionInput(false)}
@@ -79,28 +97,33 @@ export default function Dashboard() {
             <button
               key={method.name}
               onClick={method.action}
-              className="group relative bg-white rounded-2xl shadow-card p-6 hover:shadow-lg transition-all duration-300 ease-in-out"
+              className="relative group bg-white rounded-2xl shadow-md hover:shadow-xl p-6 transition-all duration-200 hover:-translate-y-1"
             >
-              <div className="flex flex-col items-center text-center space-y-4">
-                <div className="p-3 bg-teal-50 rounded-xl group-hover:bg-teal-100 transition-colors duration-300">
-                  <method.icon className="h-8 w-8 text-teal-600" />
+              <div className="absolute inset-0 bg-gradient-to-br from-burgundy-500/5 to-teal-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              <div className="relative flex flex-col items-center text-center space-y-4">
+                <div className={`flex items-center justify-center h-16 w-16 rounded-xl bg-gradient-to-br ${method.gradient} text-white shadow-lg group-hover:shadow-xl transition-shadow duration-200`}>
+                  <method.icon className="h-8 w-8" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-display font-medium text-gray-900">{method.name}</h3>
-                  <p className="mt-1 text-sm text-gray-500">{method.description}</p>
+                  <h3 className="text-lg font-display font-semibold text-gray-900">{method.name}</h3>
+                  <p className="mt-2 text-sm text-gray-500">{method.description}</p>
                 </div>
               </div>
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-burgundy-600 rounded-b-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </button>
           ))}
         </div>
       )}
 
       {/* Financial Analytics */}
-      <div className="bg-white rounded-2xl shadow-card p-6">
-        <div className="flex items-center space-x-3 mb-6">
-          <ChartBarIcon className="h-6 w-6 text-teal-600" />
-          <h2 className="text-2xl font-display font-semibold text-gray-900">Financial Analytics</h2>
+      <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8">
+        <div className="flex items-center gap-4 mb-8">
+          <div className="flex items-center justify-center h-12 w-12 rounded-xl bg-gradient-to-br from-burgundy-500 to-teal-500 text-white shadow-md">
+            <ArrowTrendingUpIcon className="h-6 w-6" />
+          </div>
+          <div>
+            <h2 className="text-xl font-display font-semibold text-gray-900">Financial Analytics</h2>
+            <p className="mt-1 text-sm text-gray-500">Track your financial performance</p>
+          </div>
         </div>
         <FinancialAnalytics transactions={transactions} />
       </div>

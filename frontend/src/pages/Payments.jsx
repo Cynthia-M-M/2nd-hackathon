@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import PaymentForm from '../components/PaymentForm'
-import { ArrowUpIcon } from '@heroicons/react/24/outline'
+import { ArrowUpIcon, CalendarIcon, HashtagIcon } from '@heroicons/react/24/outline'
 
 export default function Payments() {
   const [transactions, setTransactions] = useState([])
@@ -16,41 +16,65 @@ export default function Payments() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8">
-      <div>
-        <h2 className="text-2xl font-display font-semibold text-gray-900">Make a Payment</h2>
-        <p className="mt-2 text-gray-600">Choose your preferred payment method below.</p>
+    <div className="max-w-4xl mx-auto space-y-8 px-4 sm:px-6">
+      <div className="text-center sm:text-left">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold bg-gradient-to-r from-burgundy-600 to-teal-600 bg-clip-text text-transparent">
+          Make a Payment
+        </h2>
+        <p className="mt-2 text-gray-600 text-sm sm:text-base">
+          Choose your preferred payment method below.
+        </p>
       </div>
 
       {/* Payment Form */}
-      <PaymentForm onSuccess={handlePaymentSuccess} />
+      <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8">
+        <PaymentForm onSuccess={handlePaymentSuccess} />
+      </div>
 
       {/* Transaction History */}
       {transactions.length > 0 && (
-        <div className="card">
-          <h3 className="text-lg font-medium text-gray-900 mb-4">Recent Payments</h3>
+        <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 overflow-hidden">
+          <div className="flex items-center justify-between mb-6">
+            <h3 className="text-lg sm:text-xl font-display font-semibold text-gray-900">
+              Recent Payments
+            </h3>
+            <span className="text-sm text-gray-500">
+              {transactions.length} transaction{transactions.length !== 1 ? 's' : ''}
+            </span>
+          </div>
+
           <div className="flow-root">
-            <ul role="list" className="-my-5 divide-y divide-gray-200">
+            <ul role="list" className="-my-5 divide-y divide-gray-100">
               {transactions.map((transaction) => (
-                <li key={transaction.id} className="py-4">
-                  <div className="flex items-center space-x-4">
+                <li key={transaction.id} className="py-5 group transition-colors duration-200 hover:bg-gray-50 rounded-xl">
+                  <div className="relative flex items-start space-x-4 px-4">
                     <div className="flex-shrink-0">
-                      <ArrowUpIcon className="h-6 w-6 text-green-600" />
+                      <div className="flex items-center justify-center h-12 w-12 rounded-xl bg-gradient-to-br from-burgundy-500 to-teal-500 text-white shadow-md group-hover:shadow-lg transition-shadow duration-200">
+                        <ArrowUpIcon className="h-6 w-6" />
+                      </div>
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-gray-900 truncate">
-                        {transaction.type.toUpperCase()} Payment
-                      </p>
-                      <p className="text-sm text-gray-500 truncate">
-                        Ref: {transaction.reference}
-                      </p>
+                      <div className="flex items-center justify-between">
+                        <p className="text-sm font-medium text-gray-900 truncate">
+                          {transaction.type.toUpperCase()} Payment
+                        </p>
+                        <div className="ml-4">
+                          <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-teal-500 to-emerald-500 text-white shadow-sm">
+                            KES {transaction.amount.toLocaleString()}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="mt-2 flex items-center gap-4 text-sm text-gray-500">
+                        <div className="flex items-center gap-1">
+                          <HashtagIcon className="h-4 w-4" />
+                          <span>{transaction.reference}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <CalendarIcon className="h-4 w-4" />
+                          <span>{transaction.date}</span>
+                        </div>
+                      </div>
                     </div>
-                    <div>
-                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                        KES {transaction.amount.toLocaleString()}
-                      </span>
-                    </div>
-                    <div className="text-sm text-gray-500">{transaction.date}</div>
                   </div>
                 </li>
               ))}
