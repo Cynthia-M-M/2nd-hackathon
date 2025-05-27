@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Cynthia-M-M/2nd-hackathon/main/frontend/public/favicon.png" alt="Kashela Logo" width="200"/>
+  <img src="https://1drv.ms/i/c/2bb2f9afc8ae1149/Ecrw26KW34FBjQVFKLdM4zoB-OAzKQgFZDbK0M04gx6e2g?e=Bz1Y54" alt="Kashela Logo" width="200"/>
 </p>
 
 <p align="center">
