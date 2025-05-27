@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="C:\Users\user\OneDrive\Pictures\Saved Pictures\kashela-logo.png" alt="Kashela Logo" width="200"/>
-</p>
+🌟 Kashela
 
 <p align="center">
   <b>Your Hustle. Your Money. One App.</b><br/>
