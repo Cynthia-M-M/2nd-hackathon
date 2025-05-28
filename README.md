@@ -2,7 +2,7 @@
 
 <p align="center">
   <b>Your Hustle. Your Money. One App.</b><br/>
-  <a href="https://kashela.live">Live Demo</a> | <a href="https://github.com/Cynthia-M-M/2nd-hackathon">GitHub Repository</a>
+  <a href="https://kashela.netlify.app">Live Demo</a> | <a href="https://github.com/Cynthia-M-M/2nd-hackathon">GitHub Repository</a>
 </p>
 
 ---
