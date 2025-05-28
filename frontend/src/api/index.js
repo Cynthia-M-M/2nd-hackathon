@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:8000"; // your FastAPI backend
+const API_BASE = import.meta.env.VITE_API_URL;
 
 export async function fetchTransactions(token) {
   const res = await fetch(`${API_BASE}/transactions`, {
