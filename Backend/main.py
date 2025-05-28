@@ -41,7 +41,8 @@ async def favicon():
 # --- CORS Setup ---
 origins = [
     "http://localhost:3000",
-    "https://kashela.app",
+    "http://localhost:5173" # Vite local frontend
+    "https://kashela.netlify.app", # Production frontend
 ]
 
 app.add_middleware(
