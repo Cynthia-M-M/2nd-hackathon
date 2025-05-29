@@ -42,6 +42,8 @@ origins = [
     "http://localhost:3000",
     "http://localhost:5173", # Vite local frontend
     "https://kashela.netlify.app", # Production frontend
+    "https://kashela-api.onrender.com", # Render backend
+    "https://*.onrender.com" # Any Render subdomain
 ]
 
 app.add_middleware(
@@ -110,15 +112,16 @@ def health():
     }
 
 # --- Import Routes ---
-from routes import auth, transactions, payments
+from routes import auth, transactions, payments, uploads
 
 app.include_router(auth.router, prefix="/auth", tags=["auth"])
 app.include_router(transactions.router, prefix="/transactions", tags=["transactions"])
 app.include_router(payments.router, prefix="/payments", tags=["payments"])
+app.include_router(uploads.router, prefix="/uploads", tags=["uploads"])
 
 # --- JWT Utils ---
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
-JWT_SECRET = os.getenv("JWT_SECRET", "defaultsecret")
+JWT_SECRET = os.getenv("SUPABASE_JWT_SECRET", "defaultsecret")
 JWT_ALGORITHM = "HS256"
 
 def get_current_user_from_token(token: str = Depends(oauth2_scheme)):
@@ -132,4 +135,4 @@ def get_current_user_from_token(token: str = Depends(oauth2_scheme)):
 
 @app.get("/protected")
 async def protected_route(current_user: dict = Depends(get_current_user_from_token)):
-    return {"message": "You are authorized", "user": current_user}
+    return {"message": "You are authorized", "user": current_user} 
