@@ -1,10 +1,13 @@
 """
-Kashela API Routes
+Routes package for Kashela API
 """
 
 from . import auth
-from . import transactions
 from . import payments
 from . import uploads
+import logging
 
-__all__ = ["auth", "transactions", "payments", "uploads"]
+# Configure route-specific logging
+logger = logging.getLogger(__name__)
+
+__all__ = ["auth", "payments", "uploads"]
